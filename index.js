@@ -7,12 +7,14 @@ document.querySelectorAll("button")[i].addEventListener("click", function() {
 
     var cil = this.innerHTML
     makeSound(cil)
+    makeAnimation(cil)
 
 })
 
 document.addEventListener("keypress", function(event) {
     var keypad = event.key
     makeSound(keypad)
+    makeAnimation(keypad)
 })
 
 function makeSound(sound){
@@ -44,6 +46,16 @@ function makeSound(sound){
         var audio = new Audio('sounds/snare.mp3');
         audio.play();
     }
+}
+
+function makeAnimation(recentEvent){
+   var activebutton = document.querySelector("."+recentEvent)
+   activebutton.classList.add("pressed")
+
+   setTimeout(function(){
+       activebutton.classList.remove("pressed")
+   }, 100)
+
 }
 
 }
